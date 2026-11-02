@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabelle Leite | Psicóloga Clínica</title>
+    <meta name="theme-color" content="#053827">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        :root {
+            --cor-principal: #85ab8a;   /* verde do fundo da marca */
+            --cor-escura: #053827;      /* verde da logomarca */
+            --cor-escura-hover: #0a4d36;
+            --cor-suave: #eef4ef;       /* tom bem claro derivado do verde principal */
+            --cinza-site: #f4f7f4;
+            --texto: #333;
+            /* Century Gothic (fonte da marca); Questrial é o substituto parecido quando o aparelho não tem a Century Gothic */
+            --fonte: 'Century Gothic', 'CenturyGothic', 'AppleGothic', 'Questrial', 'Segoe UI', sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--fonte);
+            color: var(--texto);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            font-size: 15px;
+        }
+
+        /* Menu */
+        nav {
+            padding: 16px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(5, 56, 39, 0.05);
+        }
+        .logo-link { display: inline-flex; align-items: center; text-decoration: none; }
+        .logo-nav { height: 34px; width: auto; display: block; }
+        .logo-texto { font-family: var(--fonte); font-size: 22px; font-weight: 400; color: var(--cor-escura); }
+        .logo-texto strong { font-weight: 700; }
+        .nav-crp { font-size: 11px; letter-spacing: 2px; font-weight: 600; color: var(--cor-escura); }
+
+        /* Cabeçalho com foto ao lado do texto */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 70px 10%;
+            background: linear-gradient(135deg, var(--cor-suave) 0%, #fff 100%);
+            gap: 50px;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+        .foto-perfil {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            outline: 2px solid var(--cor-principal);
+            outline-offset: 4px;
+            box-shadow: 0 10px 25px rgba(5, 56, 39, 0.12);
+        }
+        .header-texto { flex: 1; min-width: 300px; max-width: 620px; }
+        .header-label {
+            color: var(--cor-escura);
+            font-weight: 600;
+            letter-spacing: 3px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nome-marca { font-size: 18px; letter-spacing: 0; font-weight: 400; text-transform: none; }
+        .nome-marca strong { font-weight: 700; }
+        .header-label-sep { width: 1px; height: 22px; background: var(--cor-principal); }
+        .header-texto h1 {
+            font-family: var(--fonte);
+            font-weight: 400;
+            font-size: 40px;
+            letter-spacing: 1px;
+            line-height: 1.25;
+            margin: 0 0 15px 0;
+            color: var(--cor-escura);
+        }
+        .header-texto h1 strong { font-weight: 700; }
+        .header-sub { font-size: 17px; color: #555; font-family: var(--fonte); font-style: italic; font-weight: 400; margin-top: 0; }
+
+        /* Botões */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 16px 32px; background: var(--cor-escura);
+            color: #fff; text-decoration: none; border-radius: 4px;
+            font-size: 13px; font-weight: 600; letter-spacing: 2px;
+            transition: all 0.3s ease; border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: var(--cor-escura-hover); transform: translateY(-2px); }
+        .btn-insta { background: transparent; color: var(--cor-escura); border: 1px solid var(--cor-escura); margin-left: 10px; }
+        .btn-insta:hover { background: var(--cor-escura); color: #fff; }
+
+        /* Faixa de destaque */
+        .faixa {
+            background: var(--cor-escura);
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .faixa-itens { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; max-width: 1000px; margin: auto; }
+        .faixa-item { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; }
+        .faixa-sep { width: 1px; height: 26px; background: var(--cor-principal); }
+
+        /* Seções gerais */
+        .container { max-width: 1100px; margin: auto; padding: 90px 20px; }
+        h2 {
+            font-family: var(--fonte);
+            font-weight: 700;
+            font-size: 30px;
+            color: var(--cor-escura);
+            margin: 0 0 40px 0;
+            text-align: center;
+        }
+        /* Linha vertical da logo como detalhe nos títulos */
+        h2::before { content: ""; display: block; width: 1px; height: 36px; background: var(--cor-principal); margin: 0 auto 18px; }
+        h2.h2-esq { text-align: left; margin-bottom: 20px; }
+        h2.h2-esq::before { margin-left: 0; }
+
+        /* Cards */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(5, 56, 39, 0.06);
+            text-align: center;
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(5, 56, 39, 0.12); }
+        .passo-num { font-family: var(--fonte); font-weight: 700; font-size: 45px; color: var(--cor-principal); opacity: 0.6; margin-bottom: 10px; line-height: 1.2; }
+        .card h3 { font-size: 17px; color: var(--cor-escura); margin-bottom: 15px; }
+
+        .card-clinico { text-align: left; border-top: 4px solid var(--cor-principal); }
+        .card-clinico h3 { font-family: var(--fonte); font-weight: 700; font-size: 18px; margin-top: 0; }
+        .card-clinico p { font-size: 14px; color: #555; }
+        .card-clinico .ref { font-size: 11px; color: #777; margin-top: 15px; border-top: 1px solid #e3ebe4; padding-top: 10px; }
+
+        /* FAQ */
+        .faq-card { text-align: left; background: var(--cor-suave); box-shadow: none; }
+        .faq-card h3 { border-left: 3px solid var(--cor-principal); padding-left: 15px; }
+
+        /* Botão flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px;
+            background: #25d366; color: #FFF; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-decoration: none; animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Rodapé */
+        footer { background: var(--cor-escura); text-align: center; font-size: 12px; color: rgba(255,255,255,0.8); }
+        .logo-rodape { max-width: 340px; width: 80%; height: auto; display: block; margin: 0 auto 30px; }
+        .selo-epsi { display: inline-block; border: 1px solid var(--cor-principal); padding: 10px 20px; border-radius: 8px; background: #fff; }
+        .selo-epsi span { font-size: 11px; font-weight: 600; color: var(--cor-escura); vertical-align: middle; letter-spacing: 1px; }
+        .link-privacidade { color: var(--cor-principal); font-size: 12px; font-weight: 600; text-decoration: none; letter-spacing: 1px; }
+        .link-privacidade:hover { color: #fff; }
+        .crise-aviso {
+            max-width: 600px; margin: 25px auto; font-size: 11px; line-height: 1.6;
+            border: 1px solid var(--cor-principal); padding: 15px; border-radius: 5px;
+            background: rgba(255,255,255,0.06); color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 14px 5%; }
+            .logo-nav { height: 26px; }
+            .nav-crp { font-size: 10px; letter-spacing: 1px; }
+            header { padding: 50px 5%; text-align: center; gap: 25px; }
+            .header-texto { min-width: 100%; }
+            .header-label { justify-content: center; }
+            .header-texto h1 { font-size: 28px; letter-spacing: 0.5px; }
+            .btn-insta { margin-left: 0; margin-top: 10px; width: 100%; }
+            .btn { width: 100%; }
+            .faixa-sep { display: none; }
+            .container { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-link" aria-label="Isabelle Leite - Início">
+            <!-- Arquivo: logo-nome-verde.png (só o nome, verde #053827, recortada sem margens) -->
+            <img src="logo-nome-verde.png" alt="Isabelle Leite" class="logo-nav"
+                 onerror="this.outerHTML='<span class=&quot;logo-texto&quot;>isabelle | <strong>leite</strong></span>'">
+        </a>
+        <div class="nav-crp">CRP 08/41495</div>
+    </nav>
+
+    <header>
+        <img src="foto.jpeg" alt="Isabelle Leite" class="foto-perfil">
+
+        <div class="header-texto">
+            <div class="header-label"><span class="nome-marca">isabelle <strong>leite</strong></span><span class="header-label-sep"></span><span>PSICÓLOGA CLÍNICA</span></div>
+            <h1><strong>O QUE CALA,</strong><br>INSISTE EM FALAR.</h1>
+            <p class="header-sub">Psicoterapia On-line: o cuidado que atravessa telas.</p>
+            <div style="margin-top: 25px;">
+                <a href="https://wa.me/5544999703789" class="btn"><i class="fab fa-whatsapp"></i>&nbsp; AGENDAR SESSÃO</a>
+                <a href="https://instagram.com/isaleitepsi" target="_blank" class="btn btn-insta"><i class="fab fa-instagram"></i>&nbsp; INSTAGRAM</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="faixa">
+        <div class="faixa-itens">
+            <div class="faixa-item">+ de 3.000 Sessões Realizadas</div>
+            <div class="faixa-sep"></div>
+            <div class="faixa-item">Atendimento On-line</div>
+            <div class="faixa-sep"></div>
+            <div class="faixa-item">Psicanálise Contemporânea</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Sobre os atendimentos</h2>
+        <p style="max-width: 750px; margin: auto; text-align: justify; color: #444;">
+            Sob o viés da <strong>Psicanálise Contemporânea</strong>, meu trabalho busca ir além do alívio imediato dos sintomas, propondo uma investigação sobre os processos inconscientes que sustentam o sofrimento. Acredito que a distância geográfica não deve ser um obstáculo para o cuidado: a tecnologia, aqui, serve como ponte para que a escuta técnica e a presença analítica alcancem quem busca suporte, onde quer que esteja.
+            <br><br>
+            Minha atuação é dedicada ao acompanhamento de quadros de <strong>Ansiedade, Transtornos de Humor e de Personalidade</strong>, sempre com o rigor e a responsabilidade que o manejo clínico exige.
+        </p>
+    </div>
+
+    <div class="container" style="padding-top: 0;">
+        <div style="max-width: 750px; margin: auto;">
+            <h2 class="h2-esq">Sobre Mim</h2>
+            <p style="text-align: justify;">
+                Sou psicóloga formada pelo <strong>Centro Universitário de Maringá (Unicesumar)</strong> e especialista em <strong>Psicanálise Contemporânea</strong> pelo Instituto de Psicanálise. Tenho experiência em psicologia clínica e estou em constante estudo e atualização.
+                <br><br>
+                Muito dos meus interesses acadêmicos sempre estiveram voltados a Transtornos de Humor e de Personalidade, além de Transtornos de Ansiedade e Estresse e desde o início da minha jornada clínica esse sempre foi o foco do meu trabalho.
+                <br><br>
+                Meu objetivo como psicóloga é promover compreensão e ampliar seu estado de consciência sobre a vida e tudo aquilo que te atravessa, romper padrões disfuncionais e proporcionar mais qualidade de vida.
+            </p>
+        </div>
+    </div>
+
+    <div style="background-color: var(--cinza-site);">
+        <div class="container">
+            <h2 style="margin-bottom: 10px;">Benefícios Clínicos</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 50px; font-style: italic;">
+                "Onde o Id estava, o Eu deve advir." — Sigmund Freud
+            </p>
+
+            <div class="grid-cards">
+                <div class="card card-clinico">
+                    <h3>Transtornos de Humor</h3>
+                    <p>
+                        Na depressão ou bipolaridade, a psicanálise auxilia o sujeito a compreender os ciclos de perda e os investimentos afetivos. O benefício está na estabilização subjetiva e na construção de novos sentidos para o vazio existencial.
+                    </p>
+                    <p class="ref"><strong>Referências:</strong> DSM-5-TR (Seção II); Freud, S. "Luto e Melancolia" (1917).</p>
+                </div>
+
+                <div class="card card-clinico">
+                    <h3>Transtornos de Ansiedade</h3>
+                    <p>
+                        A ansiedade é lida como um sinal do inconsciente frente a um desamparo. A psicoterapia permite que o paciente nomeie seus medos e reduza o estado de alerta constante, promovendo autonomia e regulação emocional.
+                    </p>
+                    <p class="ref"><strong>Referências:</strong> DSM-5-TR; Freud, S. "Inibição, Sintoma e Angústia" (1926).</p>
+                </div>
+
+                <div class="card card-clinico">
+                    <h3>Transtornos de Personalidade</h3>
+                    <p>
+                        Visa a integração da identidade e o manejo da impulsividade. O processo terapêutico oferece um suporte seguro para transformar padrões rígidos em formas mais flexíveis e saudáveis de se relacionar consigo e com o outro.
+                    </p>
+                    <p class="ref"><strong>Referências:</strong> Kernberg, O. "Transtornos Graves de Personalidade"; DSM-5-TR.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <h2>Como Funciona</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <div class="passo-num">01</div>
+                    <h3>Primeiro Contato</h3>
+                    <p>Entre em contato via WhatsApp para conversarmos sobre sua demanda e esclarecer dúvidas iniciais.</p>
+                </div>
+                <div class="card">
+                    <div class="passo-num">02</div>
+                    <h3>Agendamento</h3>
+                    <p>Realizamos o agendamento da sessão respeitando sua disponibilidade e necessidades específicas.</p>
+                </div>
+                <div class="card">
+                    <div class="passo-num">03</div>
+                    <h3>Acompanhamento</h3>
+                    <p>O processo clínico é realizado com ética, clareza e responsabilidade técnica.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <a href="https://wa.me/5544999703789" class="btn" style="padding: 20px 40px; font-size: 15px;">QUERO AGENDAR MINHA SESSÃO AGORA</a>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: var(--cinza-site);">
+        <div class="container">
+            <h2>Dúvidas Frequentes</h2>
+            <div class="grid-cards">
+                <div class="card faq-card">
+                    <h3>Por que escolher psicoterapia on-line?</h3>
+                    <p>Para que o cuidado encontre lugar na sua rotina, com o conforto e o sigilo do seu próprio espaço, sem perder a profundidade do encontro analítico.</p>
+                </div>
+                <div class="card faq-card">
+                    <h3>Psicoterapia é para quem?</h3>
+                    <p>Para todo sujeito que deseja olhar para si, dar novo sentido às suas dores e investir em um caminho de vida mais leve.</p>
+                </div>
+                <div class="card faq-card">
+                    <h3>Como funciona o pagamento?</h3>
+                    <p>O pagamento pode ser realizado via PIX, Transferência Bancária ou Link de Cartão de Crédito.</p>
+                </div>
+                <div class="card faq-card">
+                    <h3>Atende convênio?</h3>
+                    <p>Não, atendimentos apenas particulares. Mas forneço Nota Fiscal para solicitar reembolso junto ao seu convênio médico.</p>
+                </div>
+                <div class="card faq-card">
+                    <h3>Quanto tempo dura cada sessão?</h3>
+                    <p>As sessões individuais têm duração de 50 minutos.</p>
+                </div>
+                <div class="card faq-card">
+                    <h3>Qual a frequência?</h3>
+                    <p>Prioritariamente semanal, para garantir a sustentação e o avanço do trabalho analítico.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5544999703789" class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="contato">
+        <div class="container" style="padding: 60px 20px;">
+
+            <!-- Arquivo: logo-completa-clara.png (logo completa em tom claro, com CRP e frase, recortada sem margens) -->
+            <img src="logo-completa-clara.png" alt="Isabelle Leite - Psicóloga - CRP 08/41495 - O que cala, insiste em falar" class="logo-rodape"
+                 onerror="this.style.display='none'">
+
+            <div style="margin-bottom: 30px;">
+                <a href="https://e-psi.cfp.org.br/" target="_blank" style="text-decoration: none; color: inherit;">
+                    <div class="selo-epsi">
+                        <img src="https://e-psi.cfp.org.br/img/logo-e-psi.png" alt="Selo e-Psi" style="height: 40px; vertical-align: middle; margin-right: 10px;" onerror="this.src='https://via.placeholder.com/100x40?text=e-Psi'">
+                        <span>AUTORIZADA PELO CFP PARA ATENDIMENTO ON-LINE</span>
+                    </div>
+                </a>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <a href="#" class="link-privacidade" onclick="document.getElementById('modal-privacidade').style.display='block'; return false;">POLÍTICA DE PRIVACIDADE E ÉTICA</a>
+            </div>
+
+            <p style="margin: 5px 0;"><strong>isabelle leite mathias</strong> • PSICÓLOGA CLÍNICA</p>
+            <p style="margin: 5px 0; font-size: 13px;">CRP 08/41495 (8ª Região - Paraná)</p>
+
+            <div class="crise-aviso">
+                <strong>AVISO SOBRE EMERGÊNCIAS:</strong> Este site não oferece atendimento imediato para crises suicidas ou situações de urgência. Em caso de crise, ligue para o <strong>CVV no número 188</strong> ou procure a unidade de saúde mais próxima (UPA ou CAPS).
+            </div>
+
+            <p style="font-size: 10px; color: rgba(255,255,255,0.55); margin-top: 30px;">&copy; 2026 • Todos os direitos reservados conforme o Código de Ética Profissional do Psicólogo.</p>
+        </div>
+    </footer>
+
+    <div id="modal-privacidade" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(5,56,39,0.65); overflow-y: auto;">
+        <div style="background-color: #fff; margin: 5% auto; padding: 40px; border-radius: 10px; width: 80%; max-width: 700px; line-height: 1.6; position: relative;">
+            <span onclick="document.getElementById('modal-privacidade').style.display='none'" style="position: absolute; right: 20px; top: 10px; font-size: 28px; cursor: pointer; color: var(--cor-escura);">&times;</span>
+            <h2 style="text-align: left; font-size: 26px;">Política de Privacidade e Sigilo</h2>
+            <div style="font-size: 14px; color: #444; text-align: justify;">
+                <p>Em conformidade com o <strong>Código de Ética Profissional do Psicólogo</strong> e as diretrizes do <strong>CRP-PR</strong>, esta plataforma assegura:</p>
+                <ul>
+                    <li><strong>Sigilo Profissional:</strong> Todas as informações trocadas em ambiente de sessão são estritamente confidenciais, protegidas pelo sigilo profissional conforme o Art. 9º do Código de Ética.</li>
+                    <li><strong>Atendimento On-line:</strong> Realizado através de plataformas que garantem a criptografia de ponta a ponta, visando a segurança dos dados e a privacidade do paciente (Resolução CFP nº 11/2018).</li>
+                    <li><strong>Coleta de Dados:</strong> Dados coletados via formulário ou WhatsApp destinam-se exclusivamente ao primeiro contato e agendamento, não sendo compartilhados com terceiros sob nenhuma hipótese.</li>
+                    <li><strong>Prontuário Psicológico:</strong> O armazenamento de informações clínicas segue as normas de guarda de material documental do CFP, mantidos em local seguro pelo prazo mínimo de 5 anos.</li>
+                </ul>
+                <p style="font-size: 12px; color: #888;">Responsável Técnica: Isabelle Leite Mathias (CRP 08/41495).</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
